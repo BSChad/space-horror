@@ -1,0 +1,17 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Space Horror"
+config/description="This is an atmospheric space horror game aboard a space station, but the crew is missing. Where did they go?"
+config/version="0.0.1"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
