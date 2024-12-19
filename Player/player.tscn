@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://kxslk31fnc8t"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_pnywa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3cmnb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lpux7"]
+radius = 0.1
+height = 0.5
+
+[node name="Player" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1031, 0)
+gravity_scale = 0.0
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_pnywa")
+move_speed = 0.05
+launch_speed = 0.25
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3cmnb")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.413448, 0.454187)
+cull_mask = 1048571
+
+[node name="RightHand" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.941288, -0.320332, 0.106604, 0, 0.315765, 0.948838, -0.337605, -0.893129, 0.297226, 0.656, -0.436, -0.652)
+mesh = SubResource("CapsuleMesh_lpux7")
+
+[node name="LeftHand" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.941471, 0.319862, -0.106404, 0, 0.315649, 0.948876, 0.337095, -0.893339, 0.297174, -0.656, -0.436, -0.652)
+mesh = SubResource("CapsuleMesh_lpux7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
